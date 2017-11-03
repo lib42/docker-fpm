@@ -1,4 +1,4 @@
-# Docker-Image fpm-build
+# Docker-Image fpm-base
 ## Overview
 This Docker-Image includes "fpm" [[1]](https://fpm.readthedocs.io/en/latest/) (Not to be confuse with php-fpm [[2]](https://php-fpm.org/)!). fpm is used to build Linux Packages like .deb (Debian/Ubuntu/...) or .rpm (Redhat/CentOS/...). This container comes with a basic fpm install, build-essential and git. 
 
@@ -21,7 +21,7 @@ package:
 
 We save this file under build/Makefile, and run the container:
 ```
-docker run -e BUILD_DIR=/build -e BUILD_CMD="make package" -v $(pwd)/build:/build nold360/fpm-build
+docker run -e BUILD_DIR=/build -e BUILD_CMD="make package" -v $(pwd)/build:/build nold360/fpm-base
 ```
 
 Now fpm will build our package using "make package" command inside of the build-directory.
@@ -81,7 +81,7 @@ Since there are lots of different code / programming languages you might want to
 
 *Example Dockerfile*
 ```
-FROM nold360/fpm-build
+FROM nold360/fpm-base
 RUN apt-get update && apt-get -y install python3
 ENTRYPOINT /build.sh
 ```
@@ -95,7 +95,7 @@ Happy hacking!
 version: '2'
 services:
  fpm-build-mksdiso:
-  image: nold360/fpm-build
+  image: nold360/fpm-base
   volumes:
    - ./mksdiso:/build
   environment:
