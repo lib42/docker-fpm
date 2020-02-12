@@ -17,7 +17,7 @@ POST_BUILD_ARGS=${POST_BUILD_ARGS:-true}
 # GIT_REPO & branch can also be assigned using CMD:
 GIT_BRANCH=${GIT_BRANCH:-master}
 
-[ "${CLEAN_BUILD_DIR}" != "0" ] && find mksdiso/ -maxdepth 1 -mindepth 1 -exec rm -rf {} \;
+[ "${CLEAN_BUILD_DIR}" != "0" ] && rm -rf --one-file-system ${BUILD_DIR} && mkdir -p ${BUILD_DIR}
 
 # Build using git repo
 if [ ! -z "${GIT_REPO}" ] ; then
