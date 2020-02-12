@@ -23,4 +23,4 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY build.sh /build.sh
-ENTRYPOINT /build.sh
+CMD /build.sh
