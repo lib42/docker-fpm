@@ -20,7 +20,5 @@ RUN apt-get update && \
 		gawk \
 	&& apt-get clean && \
 	gem install --no-ri --no-rdoc fpm && \
+  apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
-COPY build.sh /build.sh
-CMD /build.sh
