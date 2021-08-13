@@ -1,4 +1,4 @@
-# Docker-Image fpm-base
+# Container-Image for fpm
 ## Overview
 This Docker-Image includes "fpm" [[1]](https://fpm.readthedocs.io/en/latest/) (Not to be confuse with php-fpm [[2]](https://php-fpm.org/)!). fpm is used to build Linux Packages like .deb (Debian/Ubuntu/...) or .rpm (Redhat/CentOS/...). This container comes with a basic fpm install, build-essential and git. 
 
@@ -16,7 +16,7 @@ fpm -s dir -t deb -n $(NAME) -v $(VERSION) --prefix /opt/jenkins jenkins.war
 ```
 
 ```
-docker run -v $(pwd)/build:/build nold360/fpm-base 
+docker run -v $(pwd)/build:/build lib42/fpm 
 ```
 
 Now fpm will build our package using "make package" command inside of the build-directory.

@@ -1,0 +1,17 @@
+---
+kind: pipeline
+name: build-image
+type: kubernetes
+
+steps:
+- name: build-image
+  image: plugins/buildah-docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: docker.io/lib42/fpm
+    dockerfile: Dockerfile
+    tags:
+      - latest
